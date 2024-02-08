@@ -10,7 +10,7 @@
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
         "importHelpers": true,
-        "target": "es2015",
+        "target": "es2020",
         "typeRoots": [
             "node_modules/@types"
         ],
@@ -19,7 +19,7 @@
             "dom"
         ],
         "paths": {
-            "primeng/*": ["src/app/components/*/public_api"]
+            "primeng/*": ["src/app/components/*/public_api.ts"]
         }
      }
     }

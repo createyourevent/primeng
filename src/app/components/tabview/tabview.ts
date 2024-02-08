@@ -1,11 +1,10 @@
-import {NgModule,Component,ElementRef,OnDestroy,Input,Output,EventEmitter,AfterContentInit,
-        ContentChildren,QueryList,TemplateRef,EmbeddedViewRef,ViewContainerRef,ChangeDetectorRef,ChangeDetectionStrategy, ViewEncapsulation, ViewChild, AfterViewChecked, forwardRef, Inject} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {TooltipModule} from 'primeng/tooltip';
 import {RippleModule} from 'primeng/ripple';
-import {SharedModule,PrimeTemplate} from 'primeng/api';
+import {SharedModule, PrimeTemplate} from 'primeng/api';
 import {BlockableUI} from 'primeng/api';
 import {DomHandler} from 'primeng/dom';
+import { Component, AfterContentInit, OnDestroy, Input, ContentChildren, QueryList, EmbeddedViewRef, TemplateRef, Inject, forwardRef, ViewContainerRef, ChangeDetectorRef, ChangeDetectionStrategy, ViewEncapsulation, AfterViewChecked, ViewChild, ElementRef, Output, EventEmitter, NgModule } from '@angular/core';
 
 let idx: number = 0;
 
@@ -364,7 +363,7 @@ export class TabView implements AfterContentInit,AfterViewChecked,BlockableUI {
         return this._activeIndex;
     }
 
-    set activeIndex(val:number) {
+    set activeIndex(val: number) {
         this._activeIndex = val;
         if (this.preventActiveIndexPropagation) {
             this.preventActiveIndexPropagation = false;
@@ -383,6 +382,9 @@ export class TabView implements AfterContentInit,AfterViewChecked,BlockableUI {
     updateInkBar() {
         if (this.navbar) {
             let tabHeader = DomHandler.findSingle(this.navbar.nativeElement, 'li.p-highlight');
+            if (!tabHeader) {
+                return;
+            }
             this.inkbar.nativeElement.style.width = DomHandler.getWidth(tabHeader) + 'px';
             this.inkbar.nativeElement.style.left =  DomHandler.getOffset(tabHeader).left - DomHandler.getOffset(this.navbar.nativeElement).left + 'px';
         }
